@@ -158,5 +158,26 @@ module.exports = [
     date: 'now',
     idType: 'contact'
   },
-
+  {
+    id: 'test-pregnancies',
+    type: 'count',
+    icon: 'icon-follow-up',
+    goal: -1,
+    translation_key: 'test-pregnancies.title',
+    subtitle_translation_key: 'test-pregnancies.subtitle',
+    appliesTo: 'reports',
+    appliesToType: ['pregnancy'],
+    appliesIf: () => {
+      console.warn('Targets!!');
+      // eslint-disable-next-line no-undef
+      console.warn('cht', cht);
+      // eslint-disable-next-line no-undef
+      console.warn('is chw suppervisor?', cht.v1.hasRole('chw_supervisor'));  // <----- this is the api with the function
+      // eslint-disable-next-line no-undef
+      console.warn('has can_edit?', cht.v1.hasPermission('can_edit')); // <-- and this one
+      return true;
+    },
+    date: 'now',
+    idType: 'contact'
+  }
 ];

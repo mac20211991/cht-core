@@ -17,7 +17,13 @@ const context = {
   show_delivery_form: isReadyForDelivery(thisContact, allReports),
 };
 
+// eslint-disable-next-line no-undef
+console.warn('is chw suppervisor?', cht.v1.hasRole('chw_supervisor'));  // <-- this is the api with the function
+// eslint-disable-next-line no-undef
+console.warn('has can_edit?', cht.v1.hasPermission('can_edit')); // <-- and this one
 const fields = [
+  // eslint-disable-next-line no-undef
+  { appliesToType: 'person', label: 'is chw_supervisor', value: cht.v1.hasRole('chw_supervisor'), width: 4 },
   { appliesToType: 'person', label: 'patient_id', value: thisContact.patient_id, width: 4 },
   { appliesToType: 'person', label: 'contact.age', value: thisContact.date_of_birth, width: 4, filter: 'age' },
   { appliesToType: 'person', label: 'contact.sex', value: 'contact.sex.' + thisContact.sex, translate: true, width: 4 },

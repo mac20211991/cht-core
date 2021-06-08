@@ -337,6 +337,42 @@ module.exports = [
         }
       }
     ]
+  },
+  {
+    name: 'test.tasks',
+    icon: 'icon-pregnancy',
+    title: 'Testing task',
+    appliesTo: 'reports',
+    appliesToType: ['pregnancy'],
+    // eslint-disable-next-line no-unused-vars
+    appliesIf: (contact, report) => {
+      console.warn('Tasks!!');
+      // eslint-disable-next-line no-undef
+      console.warn('cht', cht);
+      // eslint-disable-next-line no-undef
+      console.warn('is chw suppervisor?', cht.v1.hasRole('chw_supervisor'));  // <----- this is the api with the function
+      // eslint-disable-next-line no-undef
+      console.warn('has can_edit?', cht.v1.hasPermission('can_edit')); // <-- and this one
+      return true;
+    },
+    resolvedIf: () => {
+      console.warn('Tasks!! resolvedIf');
+      return false;
+    },
+    actions: [
+      {
+        type: 'report',
+        form: 'pregnancy',
+      }
+    ],
+    events: [
+      {
+        id: 'test-task-event',
+        start: 1,
+        end: 2,
+        days: 1
+      }
+    ]
   }
 ];
 
